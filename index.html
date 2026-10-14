@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HARIPCB LABS • AI PCB DETECTION</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <div class="header-badge">
+      <span class="pulse-dot"></span>
+      HARIPCB LABS • ADVANCED VISION
+    </div>
+    <h1 class="brand-title">HARIPCB LABS</h1>
+    <p class="subtitle">Experience the future with Hari’s Antigravity Project — floating borders, seamless frontend, and powerful backend integration.</p>
+
+    <section class="panel">
+      <label class="upload" for="imageInput">
+        <span class="upload-icon">↑</span>
+        <strong>Choose a PCB image</strong>
+        <span id="fileName">PNG, JPG, or JPEG</span>
+      </label>
+      <input id="imageInput" type="file" accept="image/*" hidden>
+      <div class="viewer-wrapper" id="viewerWrapper" hidden>
+        <div class="canvas-container">
+          <canvas id="defectCanvas"></canvas>
+          <div id="detectionPill" class="detection-pill" hidden>0 objects detected</div>
+        </div>
+
+        <div class="controls-bar" id="controlsBar" hidden>
+          <div class="control-header">
+            <span>Confidence Threshold</span>
+            <strong id="confidenceVal">40%</strong>
+          </div>
+          <input type="range" id="confidenceSlider" min="1" max="100" value="40">
+        </div>
+      </div>
+      <button id="detectButton" type="button">Run defect detection</button>
+      <p id="status" role="status"></p>
+      <div id="defectsSummary" class="defects-summary" hidden></div>
+      <details id="rawJsonDetails" class="json-details" hidden>
+        <summary>View raw JSON response</summary>
+        <pre id="result"></pre>
+      </details>
+    </section>
+    <p class="note">Your API key belongs in the local <code>.env</code> file—not in this webpage or in public code.</p>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
